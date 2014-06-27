@@ -1,11 +1,11 @@
 from timer import Timer
 import click
 
-def create
+def create():
 	pass
 
-def start
+def start():
 	pass
 
-def stop
+def stop():
 	pass
