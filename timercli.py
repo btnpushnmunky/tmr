@@ -2,7 +2,11 @@ from timer import Timer
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.parse_args()
+parser.add_argument('--create_db', help='Create the database', action='store_true')
+args = parser.parse_args()
+
+if args.create_db:
+    Timer.create_table(fail_silently=True)
 
 def create(name):
     new_timer = Timer(name=name)
@@ -20,5 +24,4 @@ def start():
 def stop():
     pass
 
-if __name__ == "__main__":
-    Timer.create_table(fail_silently=True)
+    
