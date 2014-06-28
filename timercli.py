@@ -1,11 +1,16 @@
 from timer import Timer
-# import click
+import argparse
 
+parser = argparse.ArgumentParser()
+parser.parse_args()
 
 def create(name):
     new_timer = Timer(name=name)
     new_timer.save()
-    pass
+
+
+def test():
+    click.echo('test')
 
 
 def start():
