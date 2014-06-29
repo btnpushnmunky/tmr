@@ -6,7 +6,9 @@ parser.add_argument('--create_db', help='Create the database', action='store_tru
 args = parser.parse_args()
 
 if args.create_db:
+    print("Creating database...")
     Timer.create_table(fail_silently=True)
+    print("Created timers.db.")
 
 def create(name):
     new_timer = Timer(name=name)
