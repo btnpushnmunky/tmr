@@ -3,9 +3,11 @@ import click
 from peewee import *
 from datetime import datetime
 
+
 @click.group()
 def timer():
     pass
+
 
 @timer.command(help='Create the database.')
 def init():
