@@ -12,6 +12,7 @@ def timer():
 @timer.command(help='Create the database.')
 def init():
     Timer.create_table(fail_silently=True)
+    print("Created database.")
 
 
 @timer.command(help='Create and start a timer.')
@@ -30,7 +31,8 @@ def stop(name):
     timer.stopped = datetime.now()
     timer.total_time = (timer.stopped - timer.started).total_seconds()
     timer.save()
-    print("Stopped {0}".format(timer.title))
+    print("Stopped {0}. You spent {1} seconds on this task.".format(
+        timer.title, timer.total_time))
 
 
 @timer.command(help='List running timers')
