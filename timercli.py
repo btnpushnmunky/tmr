@@ -15,7 +15,7 @@ def init():
 @timer.command(help='Create and start a timer.')
 @click.option("--name", prompt="Name the timer")
 def start(name):
-    # TODO: Add error handling if no database exists
+    Timer.create_table(fail_silently=True)
     new_timer = Timer.create(title=name, started=datetime.now())
     new_timer.save()
     print("Created timer {0}".format(name))
