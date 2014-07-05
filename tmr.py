@@ -37,7 +37,9 @@ def stop(name):
 
 @timer.command(help='List running timers')
 def list():
-    print('List running timers.')
+    timers = Timer.filter(Timer.stopped == None)
+    for timer in timers:
+        print("{0} has not been stopped.".format(timer.title))
 
 
 if __name__ == "__main__":
