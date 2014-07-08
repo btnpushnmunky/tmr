@@ -11,9 +11,6 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
-   intro
-   tutorial
-
 .. function:: tmr.start(name)
    
     Starts and creates a timer with *name*.
