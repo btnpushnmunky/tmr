@@ -3,14 +3,27 @@ import click
 from peewee import *
 from datetime import datetime
 
+def test():
+    """
+    Test docs.
+    """
+    pass
+
 
 @click.group()
 def timer():
+    """
+    Timer function for Click decoration.
+    """
     pass
 
 
 @timer.command(help='Create the database.')
 def init():
+    """
+    init()
+    Create the database and table.
+    """
     Timer.create_table(fail_silently=True)
     print("Created database.")
 
@@ -18,6 +31,10 @@ def init():
 @timer.command(help='Create and start a timer.')
 @click.option("--name", prompt="Name the timer")
 def start(name):
+    """
+    start(name)
+    This is the start function.
+    """
     Timer.create_table(fail_silently=True)
     new_timer = Timer.create(title=name, started=datetime.now())
     new_timer.save()
