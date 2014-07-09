@@ -10,11 +10,26 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
+.. function:: tmr.timer()
+
+    Click group for commands.
+
+.. function:: tmr.init()
+
+    Creates the database and table.
+     
 .. function:: tmr.start(name)
    
     Starts and creates a timer with *name*.
-    
+
+.. function:: tmr.stop(name)
+
+    Stop a timer with *name*.
+
+.. function:: tmr.list()
+
+    Returns timers that have not been stopped.    
 
 Indices and tables
 ==================
