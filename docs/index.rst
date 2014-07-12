@@ -30,11 +30,3 @@ Contents:
 .. function:: tmr.list()
 
     Returns timers that have not been stopped.    
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
