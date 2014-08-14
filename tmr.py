@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from timer import Timer
 import click
 from peewee import *

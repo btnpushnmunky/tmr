@@ -1,6 +1,4 @@
 cffi==0.8
 click==2.4
-greenlet==0.4.0
 peewee==2.2.4
 readline==6.2.4.1
-wsgiref==0.1.2
