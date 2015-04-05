@@ -24,7 +24,8 @@ def main():
                         action='store_true')
     parser.add_argument('-s', '--start', help='Start a timer')
     parser.add_argument('-e', '--end', help='End a timer')
-    parser.add_argument('-l', '--list', help='List running timers', action="store_true")
+    parser.add_argument('-l', '--list', help='List running timers',
+                        action="store_true")
     args = parser.parse_args()
 
     if args.init:
@@ -59,6 +60,6 @@ def stop(name):
 
 
 def list_timers():
-    timers = Timer.filter(Timer.stopped==None)
+    timers = Timer.filter(Timer.stopped == None)
     for timer in timers:
         print("{0} has not been stopped.".format(timer.title))
