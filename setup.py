@@ -1,14 +1,14 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='tmr',
     version='0.5.0',
-    description='Command line application for keeping track of time.'
+    description='Command line application for keeping track of time.',
     author='Dan Ross',
     author_email='dan@rosspixelworks.com',
     license='MIT',
-    py_modules='tmr',
-    install_requires=['Click', 'pewee']
+    packages=find_packages(),
+    install_requires=['Click', 'Peewee'],
     entry_points={
         'console_scripts': [
             'tmr-init=tmr:init',
