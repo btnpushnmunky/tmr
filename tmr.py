@@ -1,9 +1,21 @@
 #!/usr/bin/env python
 
-from timer import Timer
 import click
 from peewee import *
 from datetime import datetime
+
+
+database = SqliteDatabase('timers.db')
+
+
+class Timer(Model):
+    title = CharField()
+    started = DateTimeField(null=True)
+    stopped = DateTimeField(null=True)
+    total_time = IntegerField(null=True)
+
+    class Meta:
+        database = database
 
 
 @click.group()
