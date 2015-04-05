@@ -12,6 +12,7 @@ setup(
     entry_points={
         'console_scripts': [
             'tmr-init=tmr.main:init',
+            'tmr-start=tmr.main:start'
         ],
     },
     )
