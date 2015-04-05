@@ -11,8 +11,7 @@ setup(
     install_requires=['Click', 'Peewee'],
     entry_points={
         'console_scripts': [
-            'tmr-init=tmr.main:init',
-            'tmr-start=tmr.main:start'
+            'tmr=tmr.main:main',
         ],
     },
     )
