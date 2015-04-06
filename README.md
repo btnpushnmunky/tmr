@@ -4,7 +4,7 @@ Tmr uses Python and an SQlite database to store your timed events. Tmr's only de
 
 ## To install:
 
-Download the source, cd into the source folder, and run `pip install`. Eventually I hope to get it up on PyPI.
+Download the source, cd into the source folder, and run `pip install .`. Eventually I hope to get it up on PyPI.
 
 ## Example usage after installation:
 
