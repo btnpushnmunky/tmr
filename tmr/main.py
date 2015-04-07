@@ -25,7 +25,7 @@ class Timer(Model):
 def main():
     parser = argparse.ArgumentParser(description='Time events')
     parser.add_argument('-i', '--init', help='Initialize the timer database',
-            action='store_true')
+                        action='store_true')
     parser.add_argument('-s', '--start', help='Start a timer')
     parser.add_argument('-e', '--end', help='End a timer')
     parser.add_argument('-l', '--list', help='List running timers',
