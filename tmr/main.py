@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import argparse
-# import click
 from peewee import *
 from datetime import datetime
 
@@ -20,8 +19,7 @@ class Timer(Model):
 
 def main():
     parser = argparse.ArgumentParser(description='Time events')
-    parser.add_argument('-i', '--init', help='Initialize the timer database',
-                        action='store_true')
+    parser.add_argument('-i', '--init', help='Initialize the timer database')
     parser.add_argument('-s', '--start', help='Start a timer')
     parser.add_argument('-e', '--end', help='End a timer')
     parser.add_argument('-l', '--list', help='List running timers',
@@ -39,6 +37,10 @@ def main():
 
 
 def init():
+    """
+    Initialize the database.
+    """
+    # TODO: Add a path for the database
     Timer.create_table(fail_silently=True)
     print("Created database.")
 
@@ -63,3 +65,6 @@ def list_timers():
     timers = Timer.filter(Timer.stopped == None)
     for timer in timers:
         print("{0} has not been stopped.".format(timer.title))
+
+def export():
+    pass
