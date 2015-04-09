@@ -4,6 +4,7 @@ from peewee import *
 from datetime import datetime
 import os
 import platform
+import csv
 
 OS = platform.system()
 user_dir = os.environ['HOME']
@@ -29,6 +30,7 @@ def main():
     parser.add_argument('-e', '--end', help='End a timer')
     parser.add_argument('-l', '--list', help='List running timers',
                         action="store_true")
+    parser.add_argument('-ex', '--export', help='Export your timers')
     args = parser.parse_args()
 
     if args.init:
@@ -80,5 +82,6 @@ def list_timers():
         print("{0} has not been stopped.".format(timer.title))
 
 
-def export():
+def export(dest):
+
     pass
