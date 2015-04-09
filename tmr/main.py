@@ -6,7 +6,6 @@ import os
 import platform
 
 OS = platform.system()
-USER = os.getenv('LOGNAME')
 user_dir = os.environ['HOME']
 
 database = SqliteDatabase(os.path.join(user_dir, 'timers.db'))
