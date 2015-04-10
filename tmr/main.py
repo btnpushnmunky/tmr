@@ -22,27 +22,6 @@ class Timer(Model):
         database = database
 
 
-def main():
-    parser = argparse.ArgumentParser(description='Time events')
-    parser.add_argument('-i', '--init', help='Initialize the timer database',
-                        action='store_true')
-    parser.add_argument('-s', '--start', help='Start a timer')
-    parser.add_argument('-e', '--end', help='End a timer')
-    parser.add_argument('-l', '--list', help='List running timers',
-                        action="store_true")
-    parser.add_argument('-ex', '--export', help='Export your timers')
-    args = parser.parse_args()
-
-    if args.init:
-        init()
-    elif args.start:
-        start(args.start)
-    elif args.end:
-        stop(args.end)
-    elif args.list:
-        list_timers()
-
-
 def init():
     """
     Initialize the database.
@@ -83,5 +62,27 @@ def list_timers():
 
 
 def export(dest):
-
     pass
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Time events')
+    subcommands = parser.add_subparsers(help="Additional commands")
+    init_parser = subcommands.add_parser('init', help="Initialize the timer database") 
+    init_parser.set_defaults(func=init)
+    parser.add_argument('-s', '--start', help='Start a timer')
+    parser.add_argument('-e', '--end', help='End a timer')
+    parser.add_argument('-l', '--list', help='List running timers',
+                        action="store_true")
+    parser.add_argument('-ex', '--export', help='Export your timers')
+    args = parser.parse_args()
+    args.func()
+    #if args.init:
+    #    init()
+    #elif args.start:
+    #    start(args.start)
+    #elif args.end:
+    #    stop(args.end)
+    #elif args.list:
+    #    list_timers()
+
