@@ -1,0 +1,3 @@
+[console_scripts]
+tmr = tmr.main:main
+
