@@ -22,7 +22,7 @@ class Timer(Model):
         database = database
 
 
-def init():
+def init(args):
     """
     Initialize the database.
     """
@@ -30,21 +30,21 @@ def init():
     print("Created database.")
 
 
-def start(name):
+def start(args):
     """
     Start a timer with name.
     """
     Timer.create_table(fail_silently=True)
-    new_timer = Timer.create(title=name, started=datetime.now())
+    new_timer = Timer.create(title=args.n, started=datetime.now())
     new_timer.save()
-    print("Created timer {0}".format(name))
+    print("Created timer {0}".format(args.n))
 
 
-def stop(name):
+def stop(args):
     """
     Stop a timer with name.
     """
-    timer = Timer.get(Timer.title == name)
+    timer = Timer.get(Timer.title == args.n)
     timer.stopped = datetime.now()
     timer.total_time = (timer.stopped - timer.started).total_seconds()
     timer.save()
@@ -52,7 +52,7 @@ def stop(name):
         timer.title, timer.total_time))
 
 
-def list_timers():
+def list_timers(args):
     """
     List all running timers
     """
@@ -68,21 +68,20 @@ def export(dest):
 def main():
     parser = argparse.ArgumentParser(description='Time events')
     subcommands = parser.add_subparsers(help="Additional commands")
-    init_parser = subcommands.add_parser('init', help="Initialize the timer database") 
+    # Init parser
+    init_parser = subcommands.add_parser('init', help="Initialize the timer database")
     init_parser.set_defaults(func=init)
-    parser.add_argument('-s', '--start', help='Start a timer')
-    parser.add_argument('-e', '--end', help='End a timer')
-    parser.add_argument('-l', '--list', help='List running timers',
-                        action="store_true")
-    parser.add_argument('-ex', '--export', help='Export your timers')
-    args = parser.parse_args()
-    args.func()
-    #if args.init:
-    #    init()
-    #elif args.start:
-    #    start(args.start)
-    #elif args.end:
-    #    stop(args.end)
-    #elif args.list:
-    #    list_timers()
+    # New timer parser
+    new_item_parser = subcommands.add_parser('start', help='Start a timer')
+    new_item_parser.add_argument('n', type=str)
+    new_item_parser.set_defaults(func=start)
+    # List timers parser
+    list_timers_parser = subcommands.add_parser('list', help='List running timers')
+    list_timers_parser.set_defaults(func=list_timers)
+    # Stop timer parser
+    stop_timer_parser = subcommands.add_parser('stop', help='Stop a timer')
+    stop_timer_parser.add_argument('n', type=str)
+    stop_timer_parser.set_defaults(func=stop)
 
+    args = parser.parse_args()
+    args.func(args)
