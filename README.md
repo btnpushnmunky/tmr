@@ -8,18 +8,18 @@ Download the source, cd into the source folder, and run `pip install .`. Eventua
 
 ## Example usage after installation:
 
-###### `tmr -i (--init)`
+###### `tmr init`
 
 This will initialize your database. It only needs to be run once after installation.
 
-###### `tmr -s (--start) TITLE`
+###### `tmr start TITLE`
 
 This will start a timer with the title TITLE.
 
-###### `tmr -e (--end) TITLE`
+###### `tmr end TITLE`
 
 This will end a timer with the title TITLE.
 
-###### `tmr -l (--list)`
+###### `tmr list`
 
 This will list all running timers.
