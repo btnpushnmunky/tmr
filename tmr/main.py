@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+# [SublimeLinter flake8-ignore:-E711]
 import argparse
-from peewee import *
+from peewee import *  # noqa
+from playhouse.csv_loader import dump_csv
 from datetime import datetime
 import os
 import platform
-import csv
+
 
 OS = platform.system()
 user_dir = os.environ['HOME']
@@ -56,32 +58,39 @@ def list_timers(args):
     """
     List all running timers
     """
-    timers = Timer.filter(Timer.stopped == None)
+    timers = Timer.filter(Timer.stopped == None)  # noqa
     for timer in timers:
         print("{0} has not been stopped.".format(timer.title))
 
 
-def export(dest):
-    pass
-
+def export(args):
+    with open(os.path.join(user_dir, 'timers.csv'), 'w') as f:
+        timers = Timer.select()
+        dump_csv(timers, f)
+    
 
 def main():
     parser = argparse.ArgumentParser(description='Time events')
     subcommands = parser.add_subparsers(help="Additional commands")
     # Init parser
-    init_parser = subcommands.add_parser('init', help="Initialize the timer database")
+    init_parser = subcommands.add_parser('init',
+                                         help="Initialize the timer database")
     init_parser.set_defaults(func=init)
     # New timer parser
     new_item_parser = subcommands.add_parser('start', help='Start a timer')
     new_item_parser.add_argument('n', type=str)
     new_item_parser.set_defaults(func=start)
     # List timers parser
-    list_timers_parser = subcommands.add_parser('list', help='List running timers')
+    list_timers_parser = subcommands.add_parser('list',
+                                                help='List running timers')
     list_timers_parser.set_defaults(func=list_timers)
     # Stop timer parser
     stop_timer_parser = subcommands.add_parser('stop', help='Stop a timer')
     stop_timer_parser.add_argument('n', type=str)
     stop_timer_parser.set_defaults(func=stop)
-
+    # Export timers parser
+    export_parser = subcommands.add_parser('export', help='Export the timers')
+    export_parser.set_defaults(func=export)
+    
     args = parser.parse_args()
     args.func(args)
