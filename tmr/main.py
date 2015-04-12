@@ -67,7 +67,7 @@ def export(args):
     with open(os.path.join(user_dir, 'timers.csv'), 'w') as f:
         timers = Timer.select()
         dump_csv(timers, f)
-    
+
 
 def main():
     parser = argparse.ArgumentParser(description='Time events')
@@ -91,6 +91,6 @@ def main():
     # Export timers parser
     export_parser = subcommands.add_parser('export', help='Export the timers')
     export_parser.set_defaults(func=export)
-    
+
     args = parser.parse_args()
     args.func(args)
