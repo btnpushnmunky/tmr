@@ -23,3 +23,7 @@ This will end a timer with the title TITLE.
 ###### `tmr list`
 
 This will list all running timers.
+
+###### `tmr export`
+
+This will export the timers to a csv file.

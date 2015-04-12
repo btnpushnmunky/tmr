@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # [SublimeLinter flake8-ignore:-E711]
 import argparse
-from peewee import *  # noqa
+from peewee import *
 from playhouse.csv_loader import dump_csv
 from datetime import datetime
 import os
