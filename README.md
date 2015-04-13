@@ -1,5 +1,9 @@
 # Tmr - Simple job tracking timer to run from your terminal.
 
+<a href='https://readthedocs.org/projects/tmr/?badge=latest'>
+    <img src='https://readthedocs.org/projects/tmr/badge/?version=latest' alt='Documentation Status' />
+</a>
+
 Tmr uses Python and an SQlite database to store your timed events. Tmr's only dependency outside of Python's stdlib is [Peewee](https://github.com/coleifer/peewee), an easy to use ORM. Written with Python 3.4 in mind, but it *should* work in most version 2.7+.
 
 ## To install:
