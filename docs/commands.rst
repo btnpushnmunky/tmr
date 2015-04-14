@@ -15,8 +15,8 @@ tmr init
 tmr start TITLE
     This will start a timer with the title TITLE.
 
-tmr end TITLE
-    Stop timer with the title TITLE.
+tmr end ID
+    Stop timer with the id ID.
 
 tmr list
     List all running timers.
