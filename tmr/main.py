@@ -14,6 +14,7 @@ database = SqliteDatabase(os.path.join(user_dir, 'timers.db'))
 
 table_header = "\nId\t| Title\n-------------"
 
+
 class Timer(Model):
     title = CharField()
     started = DateTimeField(null=True)
@@ -42,6 +43,7 @@ def start(args):
     print("\nStarted: \n{0}".format(table_header))
     print("{0}\t| {1}".format(new_timer.id, new_timer.title))
     print("\n")
+
 
 def stop(args):
     """
