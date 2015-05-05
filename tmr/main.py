@@ -72,9 +72,13 @@ def list_timers(args):
 
 
 def export(args):
-    with open(os.path.join(user_dir, 'timers.csv'), 'w') as f:
-        timers = Timer.select()
-        dump_csv(timers, f)
+    if args.format == 'csv':
+        with open(os.path.join(user_dir, 'timers.csv'), 'w') as f:
+            timers = Timer.select()
+            dump_csv(timers, f)
+            print('Exported to timers.csv')
+    elif args.format == 'html':
+        print('Will export to html eventually')
 
 
 def main():
@@ -98,6 +102,7 @@ def main():
     stop_timer_parser.set_defaults(func=stop)
     # Export timers parser
     export_parser = subcommands.add_parser('export', help='Export the timers')
+    export_parser.add_argument('format', type=str, help='csv or html')
     export_parser.set_defaults(func=export)
 
     args = parser.parse_args()
