@@ -4,13 +4,13 @@ How To
 Install
 --------
 
-Download the source, cd into the source folder, and run ``pip install .``. 
+Download the source, cd into the source folder, and run ``pip install .``.
 
 Commands
 ----------
 
 tmr init
-    This initializes the database. It only needs to be run once after installing tmr. It will create a database in             the user's home directory.
+    This initializes the database. It only needs to be run once after installing tmr. It will create a database in the user's home directory.
 
 tmr start TITLE
     This will start a timer with the title TITLE.
