@@ -21,6 +21,6 @@ tmr end ID
 tmr list
     List all running timers.
 
-tmr export
-    Export all timers to a csv file. The csv file will be exported to the user's home directory.
+tmr export FORMAT
+    Export all timers to a file as FORMAT. (Only CSV is currently working.)
 
