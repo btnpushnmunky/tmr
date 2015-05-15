@@ -5,6 +5,7 @@ from playhouse.csv_loader import dump_csv
 from datetime import datetime
 import os
 import platform
+from tabulate import tabulate
 
 
 OS = platform.system()
