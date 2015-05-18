@@ -8,7 +8,7 @@ setup(
     author_email='dan@rosspixelworks.com',
     license='MIT',
     packages=find_packages(),
-    install_requires=['Peewee'],
+    install_requires=['Peewee', 'tabulate'],
     entry_points={
         'console_scripts': [
             'tmr=tmr.main:main',
