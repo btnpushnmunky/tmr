@@ -13,7 +13,7 @@ user_dir = os.environ['HOME']
 
 database = SqliteDatabase(os.path.join(user_dir, 'timers.db'))
 
-table_header = "\nId\t| Title\n-------------"
+table_header = ("ID", "Title")
 
 
 class Timer(Model):
@@ -41,9 +41,8 @@ def start(args):
     Timer.create_table(fail_silently=True)
     new_timer = Timer.create(title=args.n, started=datetime.now())
     new_timer.save()
-    print("\nStarted: \n{0}".format(table_header))
-    print("{0}\t| {1}".format(new_timer.id, new_timer.title))
-    print("\n")
+    print("Started: ")
+    print(tabulate([[new_timer.id, new_timer.title]], table_header))
 
 
 def stop(args):
@@ -54,10 +53,10 @@ def stop(args):
     timer.stopped = datetime.now()
     timer.total_time = (timer.stopped - timer.started).total_seconds()
     timer.save()
-    print("\nStopped:\n{0}".format(table_header))
-    print("{0}\t| {1} \nYou spent {2} seconds on this task.".format(
-        timer.id, timer.title, timer.total_time))
-    print("\n")
+    stopped_header = ["ID", "Title", "Total Time"]
+    print("Stopped: ")
+    data = [timer.id, timer.title, timer.total_time]
+    print(tabulate([data], stopped_header))
 
 
 def list_timers(args):
@@ -65,11 +64,9 @@ def list_timers(args):
     List all running timers
     """
     timers = Timer.filter(Timer.stopped == None)  # noqa
+    data = [[timer.id, timer.title] for timer in timers]
     print("\nRunning timers:")
-    print("\nId | Title\n-------------")
-    for timer in timers:
-        print("{0}  | {1}".format(timer.id, timer.title))
-    print("\n")
+    print(tabulate(data, table_header))
 
 
 def export(args):
