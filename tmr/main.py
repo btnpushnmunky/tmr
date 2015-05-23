@@ -15,6 +15,16 @@ database = SqliteDatabase(os.path.join(user_dir, 'timers.db'))
 
 table_header = ("ID", "Title")
 
+def parse_time(time):
+    hours = minutes = seconds = 0
+    if time > 60:
+        minutes, seconds = divmod(time, 60)
+        if minutes > 60:
+            hours, minutes = divmod(minutes, 60)
+            if hours > 60:
+                days, hours = divmod(hours, 24)
+
+    return "Days: {0}, Hours: {1}, Minutes {2}, Seconds {3}".format(days, hours, minutes, seconds)
 
 class Timer(Model):
     title = CharField()
@@ -55,7 +65,8 @@ def stop(args):
     timer.save()
     stopped_header = ["ID", "Title", "Total Time"]
     print("Stopped: ")
-    data = [timer.id, timer.title, timer.total_time]
+    time = parse_time(timer.total_time)
+    data = [timer.id, timer.title, time]
     print(tabulate([data], stopped_header))
 
 
