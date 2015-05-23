@@ -14,4 +14,4 @@ setup(
             'tmr=tmr.main:main',
         ],
     },
-    )
+)
