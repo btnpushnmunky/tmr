@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-from peewee import *
+from peewee import Model, CharField, DateTimeField, IntegerField, SqliteDatabase
 from playhouse.csv_loader import dump_csv
 from datetime import datetime
 import os
